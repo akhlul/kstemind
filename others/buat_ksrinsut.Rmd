@@ -1,0 +1,58 @@
+---
+title: "buat skrinsut"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r eval=FALSE}
+#' Stemmer CS - implementation of Confix Stripping Stemmer
+#'
+#' @docType class
+#' @name stemmer_cs
+#' @export
+stemmer_cs <- R6::R6Class(
+    classname    = "stemmer_cs",
+    lock_objects = FALSE,
+    parent_env   = asNamespace('kstemind'),
+
+  #> TODO :
+	#> []	encapsulate stem dictionary
+	#> []	test all suffix prefix conditions
+
+	public = list(
+		dictionary_name = NULL,
+		initialize = function(stem_dictionary = "kamus_sastrawi") {
+			self$dictionary_name <- stem_dictionary
+			private$stem_dictionary <- kstemind_load_data(stem_dictionary)
+			private$visitors <- visitors_cs$new()
+		},
+		stem_word = function(word) {
+			if(private$is_plural(word)) {
+				return( private$stem_plural(word) )
+			} else {
+				return( private$stem_singular(word) )
+			}
+		},
+		stem = function(word) {
+		  # 1. Try to load cached data, if already generated
+		  key <- list(word)
+		  data <- loadCache(key, suffix=".cs.Rcache")
+		  if (!is.null(data)) {
+		    return(data);
+		  }
+		  # 2. If not available, generate it.
+		  data <- self$stem_word(word)
+		  saveCache(data, key=key, suffix=".cs.Rcache")
+		  return(data)
+		}
+	),
+  ...
+)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
