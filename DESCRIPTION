@@ -14,8 +14,6 @@ Imports:
 	hashmap (>= 0.2.2),
 	htm2txt (>= 2.1.1),
 	textclean (>= 0.6.3),
-    data.table (>= 1.11.4),
-	stringdist (>= 0.9.5.1),
-	pbapply (>= 1.3),
+  data.table (>= 1.11.4),
 	R.cache (>= 0.10.0)
 RoxygenNote: 6.0.1
