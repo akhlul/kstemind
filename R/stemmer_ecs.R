@@ -83,7 +83,8 @@ stemmer_ecs <- R6::R6Class(
 				word = word,
 				removal_steps = private$visitors$create_empty_removal_steps()
 			)
-			self$myvar <- current
+			# self$myvar <- current
+			# print(current$word)
 
 			# step 1 : check against the stem dictionary
 			#				 : also do not stem short words
@@ -112,6 +113,8 @@ stemmer_ecs <- R6::R6Class(
 				word = original_word,
 				removal_steps = private$visitors$create_empty_removal_steps()
 			)
+			# print(current$word)
+
 			current <- private$accept_visitors(current$word, current$removal_steps, "suffix")
 			# self$myvar <- current
 			if(private$stem_dictionary$has_key(current$word)){ return(current$word)	}
@@ -122,6 +125,7 @@ stemmer_ecs <- R6::R6Class(
 			# self$myvar <- current
 			if(private$stem_dictionary$has_key(current$word)){ return(current$word)	}
 
+			# print(current$word)
 			# ECS step : loopPengembalianAkhiran
 			current_word <- private$loop_pengembalian_akhiran(current)
 			if(private$stem_dictionary$has_key(current_word)){ return(current_word)	}
@@ -159,13 +163,15 @@ stemmer_ecs <- R6::R6Class(
 			if(nrow(rs_suffix) > 0) {
 				for (i in nrow(rs_suffix):1) {
 					if(rs_suffix$affix[i] == "kan") {
+						word_before <- current_word
+						
 						# try 'k' first
 						current_word <- paste0(current_word, "k")
 						temp <- private$accept_visitors(current_word, NULL, "prefix")
 						if(private$stem_dictionary$has_key(temp$word)){ return(temp$word) }
 
 						# fail use 'k', replace back with 'kan'
-						current_word <- paste0(current_word, "kan")
+						current_word <- paste0(word_before, "kan")
 					} else {
 						current_word <- paste0(current_word, rs_suffix$affix[i])
 					}

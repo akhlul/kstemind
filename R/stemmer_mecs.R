@@ -159,13 +159,15 @@ stemmer_mecs <- R6::R6Class(
 			if(nrow(rs_suffix) > 0) {
 				for (i in nrow(rs_suffix):1) {
 					if(rs_suffix$affix[i] == "kan") {
+						word_before <- current_word
+						
 						# try 'k' first
 						current_word <- paste0(current_word, "k")
 						temp <- private$accept_visitors(current_word, NULL, "prefix")
 						if(private$stem_dictionary$has_key(temp$word)){ return(temp$word) }
 
 						# fail use 'k', replace back with 'kan'
-						current_word <- paste0(current_word, "kan")
+						current_word <- paste0(word_before, "kan")
 					} else {
 						current_word <- paste0(current_word, rs_suffix$affix[i])
 					}

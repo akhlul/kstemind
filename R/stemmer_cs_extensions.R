@@ -55,7 +55,8 @@ visitors_cs <- R6::R6Class(
 		replace_by_index = function(table, index, word) {
 			construct <- table$construct[index]
 			replace_with <- table$replace_with[index]
-			rule <- table$rule[index]
+			# Debug Only
+			# rule <- table$rule[index]
 			# subrule <- table$subrule[index]
 			# message(
 			# 	rule, '(', subrule, ') : ', str_replace_all(word, construct, replace_with)

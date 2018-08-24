@@ -14,7 +14,7 @@ calculate_ssm(output_stem_a, output_stem_b, original_words)
 \item{original_words}{an array of original word tested in those two stemmer}
 }
 \value{
-value of SSM in range between 0-100
+list value of SSM in range between 0-100 and df difference from both stemmer
 }
 \description{
 Calculate Stemmer Similarity Metrics (SSM)

@@ -14,7 +14,6 @@ stemmer_nondeterministic <- R6::R6Class(
 
 	public = list(
 		dictionary_name = NULL,
-        criteria = NULL,
 
 		initialize = function(stem_dictionary = "kamus_sastrawi", closewords = "closewords_nondeterministik") {
 			self$dictionary_name <- stem_dictionary

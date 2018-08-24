@@ -1,3 +1,24 @@
+library(hashmap)
+
+#> Kamus Sastrawi - stem dictionary used in Sastrawi's stemmer
+kamus_sastrawi_raw <- read.table("data-raw/kamus_sastrawi.txt", quote="\"", comment.char="")
+kamus_sastrawi <- hashmap(as.vector(kamus_sastrawi_raw[,1]), rep.int(1, length(kamus_sastrawi_raw[,1])))
+devtools::use_data(kamus_sastrawi_raw, overwrite = TRUE)
+save_hashmap(kamus_sastrawi, "inst/extdata/kamus/sastrawi.hashmap")
+
+#> Kamus Nazief Andriani - stem dictionary used in Nazief and Andriani's stemmer
+kamus_nazief_andriani_raw <- read.table("data-raw/kamus_nazief_andriani.txt", quote="\"", comment.char="")
+kamus_nazief_andriani <- hashmap(as.vector(kamus_nazief_andriani_raw[,1]), rep.int(1, length(kamus_nazief_andriani_raw[,1])))
+devtools::use_data(kamus_nazief_andriani_raw, overwrite = TRUE)
+save_hashmap(kamus_nazief_andriani, "inst/extdata/kamus/nazief_andriani.hashmap")
+
+#> Kamus Hidayat - stem dictionary used in Incremental stemmer
+kamus_hidayat_raw <- read.table("data-raw/kamus_hidayat.txt", quote="\"", comment.char="")
+kamus_hidayat <- hashmap(as.vector(kamus_hidayat_raw[,1]), rep.int(1, length(kamus_hidayat_raw[,1])))
+devtools::use_data(kamus_hidayat_raw, overwrite = TRUE)
+save_hashmap(kamus_hidayat, "inst/extdata/kamus/hidayat.hashmap")
+
+
 #> Benchmarking which data type will be used!
 #>   *documentation only
 #
@@ -22,23 +43,3 @@
 #   times = 50
 # ))
 # autoplot(result)
-
-library(hashmap)
-
-#> Kamus Sastrawi - stem dictionary used in Sastrawi's stemmer
-kamus_sastrawi_raw <- read.table("data-raw/kamus_sastrawi.txt", quote="\"", comment.char="")
-kamus_sastrawi <- hashmap(as.vector(kamus_sastrawi_raw[,1]), rep.int(1, length(kamus_sastrawi_raw[,1])))
-devtools::use_data(kamus_sastrawi_raw, overwrite = TRUE)
-save_hashmap(kamus_sastrawi, "R/kamus/sastrawi.hashmap")
-
-#> Kamus Nazief Andriani - stem dictionary used in Nazief and Andriani's stemmer
-kamus_nazief_andriani_raw <- read.table("data-raw/kamus_nazief_andriani.txt", quote="\"", comment.char="")
-kamus_nazief_andriani <- hashmap(as.vector(kamus_nazief_andriani_raw[,1]), rep.int(1, length(kamus_nazief_andriani_raw[,1])))
-devtools::use_data(kamus_nazief_andriani_raw, overwrite = TRUE)
-save_hashmap(kamus_nazief_andriani, "R/kamus/nazief_andriani.hashmap")
-
-#> Kamus Hidayat - stem dictionary used in Incremental stemmer
-kamus_hidayat_raw <- read.table("data-raw/kamus_hidayat.txt", quote="\"", comment.char="")
-kamus_hidayat <- hashmap(as.vector(kamus_hidayat_raw[,1]), rep.int(1, length(kamus_hidayat_raw[,1])))
-devtools::use_data(kamus_hidayat_raw, overwrite = TRUE)
-save_hashmap(kamus_hidayat, "R/kamus/hidayat.hashmap")

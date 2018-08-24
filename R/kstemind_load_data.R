@@ -14,37 +14,48 @@
 kstemind_load_data <- function(data) {
 	switch(data,
 		"kamus_sastrawi" = {
-			return(load_hashmap("R/kamus/sastrawi.hashmap"))
+			this_path <- system.file("extdata/kamus", "sastrawi.hashmap", package = "kstemind")
+			return(load_hashmap(this_path))
 		},
 		"kamus_nazief_andriani" = {
-			return(load_hashmap("R/kamus/nazief_andriani.hashmap"))
+			this_path <- system.file("extdata/kamus", "nazief_andriani.hashmap", package = "kstemind")
+			return(load_hashmap(this_path))
 		},
 		"kamus_hidayat" = {
-			return(load_hashmap("R/kamus/hidayat.hashmap"))
+			this_path <- system.file("extdata/kamus", "hidayat.hashmap", package = "kstemind")
+			return(load_hashmap(this_path))
 		},
 		"tabel_visitors_ecs" = {
-		  return(readRDS("R/visitors/ecs.rds"))
+			this_path <- system.file("extdata/visitors", "ecs.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		"tabel_visitors_nazief_andriani" = {
-		  return(readRDS("R/visitors/nazief_andriani.rds"))
+			this_path <- system.file("extdata/visitors", "nazief_andriani.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		"tabel_visitors_cs" = {
-		  return(readRDS("R/visitors/cs.rds"))
+		  	this_path <- system.file("extdata/visitors", "cs.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		"tabel_visitors_mecs" = {
-		  return(readRDS("R/visitors/mecs.rds"))
+		  	this_path <- system.file("extdata/visitors", "mecs.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		"tabel_visitors_sastrawi" = {
-		  return(readRDS("R/visitors/sastrawi.rds"))
+		  	this_path <- system.file("extdata/visitors", "sastrawi.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		"tabel_level_incremental" = {
-		  return(readRDS("R/visitors/level_incremental.rds"))
+		  	this_path <- system.file("extdata/visitors", "level_incremental.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		"aturan_nondeterministik" = {
-		  return(readRDS("R/visitors/aturan_nondeterministik.rds"))
+		  	this_path <- system.file("extdata/visitors", "aturan_nondeterministik.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		"closewords_nondeterministik" = {
-		  return(readRDS("R/visitors/closewords_nondeterministik.rds"))
+		  	this_path <- system.file("extdata/visitors", "closewords_nondeterministik.rds", package = "kstemind")
+			return(readRDS(this_path))
 		},
 		{
 			print("unable to get the data")

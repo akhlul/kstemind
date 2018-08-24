@@ -13,7 +13,7 @@ visitors_cs <- list(
 )
 
 # devtools::use_data(visitors_cs, overwrite = TRUE)
-saveRDS(visitors_cs, "R/visitors/cs.rds")
+saveRDS(visitors_cs, "inst/extdata/visitors/cs.rds")
 
 ################################################################
 # Visitors table creator for ECS
@@ -30,7 +30,7 @@ visitors_ecs <- list(
 )
 
 # devtools::use_data(visitors_cs, overwrite = TRUE)
-saveRDS(visitors_ecs, "R/visitors/ecs.rds")
+saveRDS(visitors_ecs, "inst/extdata/visitors/ecs.rds")
 
 ################################################################
 # Visitors table creator for MECS
@@ -47,7 +47,7 @@ visitors_mecs <- list(
 )
 
 # devtools::use_data(visitors_cs, overwrite = TRUE)
-saveRDS(visitors_mecs, "R/visitors/mecs.rds")
+saveRDS(visitors_mecs, "inst/extdata/visitors/mecs.rds")
 
 ################################################################
 # Visitors table creator for Sastrawi
@@ -64,7 +64,7 @@ visitors_sastrawi <- list(
 )
 
 # devtools::use_data(visitors_cs, overwrite = TRUE)
-saveRDS(visitors_sastrawi, "R/visitors/sastrawi.rds")
+saveRDS(visitors_sastrawi, "inst/extdata/visitors/sastrawi.rds")
 
 ################################################################
 # Visitors table creator for Nazief-Andriani
@@ -81,4 +81,4 @@ visitors_nazief_andriani <- list(
 )
 
 # devtools::use_data(visitors_cs, overwrite = TRUE)
-saveRDS(visitors_nazief_andriani, "R/visitors/nazief_andriani.rds")
+saveRDS(visitors_nazief_andriani, "inst/extdata/visitors/nazief_andriani.rds")

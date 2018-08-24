@@ -23,20 +23,27 @@ tokenize_indonesian <- function(text, do_clean = FALSE) {
 
 #' Chunking Tokens of Word
 #'
-#' @param tokenized_text array of string
+#' @param text long string
 #' @param chunk_size (default = 100)
 #' @param text_id (default = "teks")
 #'
 #' @return list of chunked tokenized text
 #' @import stringr textclean htm2txt
 #' @export
-chunk_tokenized_text <- function(tokenized_text, chunk_size = 100, text_id = "teks") {
-  chunks <- split(tokenized_text, ceiling(seq_along(tokenized_text)/chunk_size))
-
-  num_chars <- str_length(length(chunks))
-  chunk_ids <- str_pad(seq(length(chunks)), num_chars, side = "left", pad = "0")
-  names(chunks) <- str_c(text_id, chunk_ids, sep = "_")
-  return(chunks)
+chunk_text <- function(text, by_size = F, chunk_size = 100) {
+  if(by_size){
+    tokenized_text <- tokenize_indonesian(text)
+    chunks <- split(tokenized_text, ceiling(seq_along(tokenized_text)/chunk_size))
+    num_chars <- str_length(length(chunks))
+    chunk_ids <- str_pad(seq(length(chunks)), num_chars, side = "left", pad = "0")
+    names(chunks) <- str_c("id_", chunk_ids, sep = "_")
+    return(chunks)
+  } else {
+    chunks <- unlist(str_split(text, "[\\.!?]+"))
+    chunks <- str_trim(chunks, "both")
+    chunks <- chunks[nchar(chunks) > 0]
+    return(chunks)
+  }
 }
 
 

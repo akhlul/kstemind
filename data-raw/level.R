@@ -11,7 +11,7 @@ level <- list(
 )
 
 # devtools::use_data(level_incremental, overwrite = TRUE)
-saveRDS(level, "R/visitors/level_incremental.rds")
+saveRDS(level, "inst/extdata/visitors/level_incremental.rds")
 
 ################################################################
 # affixes rule table creator for Non-Deterministic Stemmer
@@ -28,7 +28,7 @@ rules <- list(
 )
 
 # devtools::use_data(level_incremental, overwrite = TRUE)
-saveRDS(rules, "R/visitors/aturan_nondeterministik.rds")
+saveRDS(rules, "inst/extdata/visitors/aturan_nondeterministik.rds")
 
 ################################################################
 # affixes rule table creator for Non-Deterministic Stemmer
@@ -40,4 +40,4 @@ closewords <- read_excel("data-raw/table_closewords_nondet.xlsx", sheet = "words
 closewords <- as.data.table(closewords)
 
 # devtools::use_data(level_incremental, overwrite = TRUE)
-saveRDS(closewords, "R/visitors/closewords_nondeterministik.rds")
+saveRDS(closewords, "inst/extdata/visitors/closewords_nondeterministik.rds")
